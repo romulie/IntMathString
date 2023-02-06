@@ -1,5 +1,65 @@
 #include "IntMathString.h"
-#include "sum_strings.h"
+#include "sum_strings.h" /// !!!!WORKS ONLY FOR NON-NEGATIVE VALUES!!!!
+#include "subtract_strings.h"
+#include "compare_MathStrings.h"
+
+IntMathString IntMathString::operator-(const IntMathString& other){
+    IntMathString result;
+    result.s = subtract_strings(this->s, other.s);
+    return result;
+}
+
+IntMathString IntMathString::operator+(const IntMathString& other){
+    IntMathString result;
+    result.s = sum_strings(this->s, other.s);
+    return result;
+}
+
+IntMathString& IntMathString::operator++(){                         /// ++i pre-increment operator
+    *this = *this + IntMathString(1);
+    //this -> s = sum_strings(this->s, "1");
+    return *this;
+}
+
+IntMathString IntMathString::operator++(int){                         /// ++i post-increment operator
+    IntMathString tmp(this -> s);
+    *this = *this + IntMathString(1);
+    //this -> s = sum_strings(this->s, "1");
+    return tmp;
+}
+
+IntMathString& IntMathString::operator--(){                         /// --i pre-decrement operator
+    *this = *this - IntMathString(1);
+    //this -> s = subtract_strings(this->s, "1");
+    return *this;
+}
+
+IntMathString IntMathString::operator--(int){                         /// i-- post-decrement operator
+    IntMathString tmp(this -> s);
+    *this = *this - IntMathString(1);
+    //this -> s = subtract_strings(this->s, "1");
+    return tmp;
+}
+
+bool IntMathString::operator<(const IntMathString& other){         /// < operator
+    int result = compare_MathStrings(this->s, other.s);
+    return (result == -1);
+}
+
+bool IntMathString::operator>(const IntMathString& other){         /// > operator
+    int result = compare_MathStrings(this->s, other.s);
+    return (result == 1);
+}
+
+bool IntMathString::operator<=(const IntMathString& other){         /// <= operator
+    int result = compare_MathStrings(this->s, other.s);
+    return (result < 1);
+}
+
+bool IntMathString::operator>=(const IntMathString& other){         /// >= operator
+    int result = compare_MathStrings(this->s, other.s);
+    return (result > -1);
+}
 
 std::istream& operator>>(std::istream& is, IntMathString& a){
     is >> a.s;
@@ -11,14 +71,8 @@ std::ostream& operator<<(std::ostream& os, const IntMathString& a){
     return os;//
 }
 
-IntMathString IntMathString::operator+(const IntMathString& other){
-    IntMathString result;
-    result.s = sum_strings(this->s, other.s);
-    return result;
-}
-
-IntMathString::IntMathString(const IntMathString& other){
-    //if (this->s != other.s){                 ///copy ctor
+IntMathString::IntMathString(const IntMathString& other){       ///copy ctor
+    //if (this->s != other.s){
         this -> s = other.s;
     //}
 }

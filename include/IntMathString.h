@@ -10,13 +10,23 @@ class IntMathString
 {
     public:
         IntMathString() { this -> s = "0"; };               /// ctor
+        IntMathString(int n) { this -> s = std::to_string(n); };/// ctor from int????
         IntMathString(std::string val) { this -> s = val; };/// ctor ??? CHECK FOR VALIDITY!
         virtual ~IntMathString(){};                         /// dtor
         IntMathString(const IntMathString& other);          /// copy ctor
-                                                            /// move ctor
+        //IntMathString(IntMathString&& other)=default;       /// move ctor???????????????????????
         IntMathString& operator=(const IntMathString& rhs); /// assignment operator
         IntMathString& operator=(const std::string& rhs);   /// assignment operator
-        IntMathString operator+(const IntMathString& other);/// + operator
+        IntMathString operator+(const IntMathString& other);/// + operator !!!! WORKS ONLY WITH POSITIVE NUMBERS!!!!
+        IntMathString operator-(const IntMathString& other);/// - operator
+        bool operator<(const IntMathString& other);         /// < operator
+        bool operator>(const IntMathString& other);         /// > operator
+        bool operator<=(const IntMathString& other);        /// <= operator
+        bool operator>=(const IntMathString& other);        /// >= operator
+        IntMathString& operator++();                        /// ++i pre-increment operator
+        IntMathString operator++(int);                      /// i++ post-increment operator
+        IntMathString& operator--();                        /// --i pre-decrement operator
+        IntMathString operator--(int);                      /// i-- post-decrement operator
         friend std::ostream& operator<<(std::ostream& os, const IntMathString& a);   /// << operator
         friend std::istream& operator>>(std::istream& is, IntMathString& a);         /// >> operator
         std::string get() { return s; }                     /// getter
