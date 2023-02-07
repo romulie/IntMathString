@@ -1,7 +1,4 @@
 #include "IntMathString.h"
-#include "sum_strings.h" /// !!!!WORKS ONLY FOR NON-NEGATIVE VALUES!!!!
-#include "subtract_strings.h"
-#include "compare_MathStrings.h"
 
 IntMathString IntMathString::operator-(const IntMathString& other){
     IntMathString result;
@@ -21,20 +18,21 @@ IntMathString& IntMathString::operator++(){                         /// ++i pre-
     return *this;
 }
 
-IntMathString IntMathString::operator++(int){                         /// ++i post-increment operator
+IntMathString IntMathString::operator++(int foo){                         /// ++i post-increment operator
     IntMathString tmp(this -> s);
-    *this = *this + IntMathString(1);
-    //this -> s = sum_strings(this->s, "1");
+    //*this = *this + IntMathString(1);
+    this -> s = sum_strings(this->s, "1");
     return tmp;
 }
 
 IntMathString& IntMathString::operator--(){                         /// --i pre-decrement operator
-    *this = *this - IntMathString(1);
-    //this -> s = subtract_strings(this->s, "1");
+    //*this = *this - IntMathString(1);
+    this -> s = subtract_strings(this->s, "1");
+    //*this = *this - IntMathString(1);
     return *this;
 }
 
-IntMathString IntMathString::operator--(int){                         /// i-- post-decrement operator
+IntMathString IntMathString::operator--(int foo){                         /// i-- post-decrement operator
     IntMathString tmp(this -> s);
     *this = *this - IntMathString(1);
     //this -> s = subtract_strings(this->s, "1");

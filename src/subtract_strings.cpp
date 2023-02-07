@@ -7,6 +7,14 @@ std::string subtract_strings(const std::string &a, const std::string &b) {
     while ((a1[0] == '0') && (a1.size() != 1)) a1.erase(0, 1);
     while((b1[0] == '0') && (b1.size() != 1)) b1.erase(0, 1);
 
+    if (a1[0] == '-' && b1[0] != '-') return "-" + sum_strings(a1.substr(1), b1);
+    if (a1[0] != '-' && b1[0] == '-') return sum_strings(a1, b1);
+    if (a1[0] == '-' && b1[0] == '-'){
+        std::string tmp = a1.substr(1);
+        a1 = b1.substr(1);
+        b1 = tmp;
+    }
+
     int sizeA = a.size();
     int sizeB = b.size();
     std::string zeroes(abs(sizeA - sizeB), '0');
