@@ -1,5 +1,11 @@
 #include "IntMathString.h"
 
+IntMathString IntMathString::operator*(const IntMathString& other){ // multiplication operator
+    IntMathString result;
+    result.s = multiply_strings(this->s, other.s);
+    return result;
+}
+
 IntMathString IntMathString::operator-(const IntMathString& other){
     IntMathString result;
     result.s = subtract_strings(this->s, other.s);
