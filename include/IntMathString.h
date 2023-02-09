@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string>
 #include "sum_strings.h"
-#include "subtract_strings.h" /// !!!!WORKS ONLY FOR NON-NEGATIVE VALUES!!!!
+#include "subtract_strings.h"
 #include "compare_MathStrings.h"
+#include "multiply_strings.h"
 
 class IntMathString
 {
@@ -15,11 +16,12 @@ class IntMathString
         IntMathString(std::string val) { this -> s = val; };/// ctor ??? CHECK FOR VALIDITY!
         virtual ~IntMathString(){};                         /// dtor
         IntMathString(const IntMathString& other);          /// copy ctor
-        //IntMathString(IntMathString&& other)=default;       /// move ctor???????????????????????
+        //IntMathString(IntMathString&& other)=default;     /// move ctor???????????????????????
         IntMathString& operator=(const IntMathString& rhs); /// assignment operator
         IntMathString& operator=(const std::string& rhs);   /// assignment operator
         IntMathString operator+(const IntMathString& other);/// + operator
-        IntMathString operator-(const IntMathString& other);/// - operator !!!! WORKS ONLY WITH POSITIVE NUMBERS!!!!
+        IntMathString operator-(const IntMathString& other);/// - operator
+        IntMathString operator*(const IntMathString& other);/// * operator (multiplication)
         bool operator<(const IntMathString& other);         /// < operator
         bool operator>(const IntMathString& other);         /// > operator
         bool operator<=(const IntMathString& other);        /// <= operator
