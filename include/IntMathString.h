@@ -7,6 +7,7 @@
 #include "subtract_strings.h"
 #include "compare_MathStrings.h"
 #include "multiply_strings.h"
+#include "divide_strings.h"
 
 class IntMathString
 {
@@ -22,6 +23,8 @@ class IntMathString
         IntMathString operator+(const IntMathString& other);/// + operator
         IntMathString operator-(const IntMathString& other);/// - operator
         IntMathString operator*(const IntMathString& other);/// * operator (multiplication)
+        IntMathString operator/(const IntMathString& other);/// / operator (integer division)
+        IntMathString operator%(const IntMathString& other);/// % operator (modulo)
         bool operator<(const IntMathString& other);         /// < operator
         bool operator>(const IntMathString& other);         /// > operator
         bool operator<=(const IntMathString& other);        /// <= operator

@@ -1,5 +1,17 @@
 #include "IntMathString.h"
 
+IntMathString IntMathString::operator/(const IntMathString& other){ /// / operator (integer division)
+    IntMathString result;
+    result.s = divide_strings(this->s, other.s)[0];
+    return result;
+}
+
+IntMathString IntMathString::operator%(const IntMathString& other){ /// % operator (modulo)
+    IntMathString result;
+    result.s = divide_strings(this->s, other.s)[1];
+    return result;
+}
+
 IntMathString IntMathString::operator*(const IntMathString& other){ // multiplication operator
     IntMathString result;
     result.s = multiply_strings(this->s, other.s);
