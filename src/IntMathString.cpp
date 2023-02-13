@@ -1,5 +1,16 @@
 #include "IntMathString.h"
 
+
+IntMathString IntMathString::factorial(){ /// factorial
+    IntMathString result(1);
+    IntMathString cnt(*this);
+    while (cnt > 1){
+      result = result * cnt;
+      --cnt;
+    }
+    return result;
+}
+
 IntMathString IntMathString::operator/(const IntMathString& other){ /// / operator (integer division)
     IntMathString result;
     result.s = divide_strings(this->s, other.s)[0];
