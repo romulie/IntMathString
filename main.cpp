@@ -6,7 +6,7 @@
 int main(){
     IntMathString a, b(5), c;
     //std::string c{"123456"};
-    a = "333";
+    a = "333e";
     b = 500;
     //IntMathString c(9988);
     c = b.factorial();
